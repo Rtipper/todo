@@ -4,7 +4,7 @@
 **Version**: 1.0.0
 
 # Pull Request
--  https://github.com/Rtipper/todo/pull/1
+-  https://github.com/Rtipper/todo/pull/4
 
 # Netlify Deployment
 - https://festive-mahavira-40462b.netlify.app
