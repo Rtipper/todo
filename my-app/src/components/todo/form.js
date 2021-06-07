@@ -17,7 +17,7 @@ function TodoForm(props) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+       <form data-testid="testForm" onSubmit={handleSubmit}>
         <Card style={{ width: '18rem' }}>
           <Card.Body>
             <Card.Title>Add An Item to the To Do List </Card.Title>
@@ -40,6 +40,7 @@ function TodoForm(props) {
 
             <Card.Text>Assigned To</Card.Text>
             <input
+              data-testid="assigneeTest"
               type="text"
               name="assignee"
               placeholder="Type Name Here"
