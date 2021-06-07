@@ -7,7 +7,7 @@
 -  https://github.com/Rtipper/todo/pull/4
 
 # Netlify Deployment
-- https://quizzical-brattain-fc52e7.netlify.app
+- https://confident-haibt-085648.netlify.app/
 
 ## Overview - Creation of a ToDo task tracking app via React
 
