@@ -1,108 +1,59 @@
-import React, {useState, useEffect} from 'react';
-
+import { useState } from 'react';
+import { Card, Button } from 'react-bootstrap';
 
 function TodoForm(props) {
-  const [item, setItem] = useState(props.item)
+  const [item, setItem] = useState({})
 
-  const changeItem = () => {
-    
+  const handleInputChange = (e) => {
+    setItem({ ...item, [e.target.name]: e.target.value })
   }
-}
 
-class TodoForm extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { item: {} };
-  }
-  handleInputChange = e => {
-    this.setState({ item: {...this.state.item, [e.target.name]: e.target.value } });
-  };
-
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     e.target.reset();
-    this.props.handleSubmit(this.state.item);
-    const item = {};
-    this.setState({item});
-  };
+    props.handleSubmit(item);
+    setItem({});
+  }
 
-  render() {
-    return (
-      <>
-        <h3>Add Item</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            <span>To Do Item</span>
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <Card style={{ width: '18rem' }}>
+          <Card.Body>
+            <Card.Title>Add An Item to the To Do List </Card.Title>
             <input
+              id="toDoItem"
+              type="text"
               name="text"
               placeholder="Add To Do List Item"
-              onChange={this.handleInputChange}
+              onChange={handleInputChange}
             />
-          </label>
-          <label>
-            <span>Difficulty Rating</span>
-            <input defaultValue="1" type="range" min="1" max="5" name="difficulty" onChange={this.handleInputChange} />
-          </label>
-          <label>
-            <span>Assigned To</span>
-            <input type="text" name="assignee" placeholder="Assigned To" onChange={this.handleInputChange} />
-          </label>
-          <button>Add Item</button>
-        </form>
-      </>
-    );
-  }
+            <Card.Text>Difficulty Rating</Card.Text>
+            <input
+              id="diffRating"
+              defaultValue="1"
+              type="range"
+              min="1"
+              max="5"
+              name="difficulty"
+              onChange={handleInputChange} />
+
+            <Card.Text>Assigned To</Card.Text>
+            <input
+              type="text"
+              name="assignee"
+              placeholder="Type Name Here"
+              onChange={handleInputChange} />
+
+            <Button id="submitbutton" variant="primary" type="submit">
+              Add New Task
+            </Button>
+
+          </Card.Body>
+        </Card>
+      </form>
+    </>
+  )
 }
 
 export default TodoForm;
-
-// import React from 'react';
-
-// class TodoForm extends React.Component {
-
-//   constructor(props) {
-//     super(props);
-//     this.state = { item: {} };
-//   }
-//   handleInputChange = e => {
-//     this.setState({ item: {...this.state.item, [e.target.name]: e.target.value } });
-//   };
-
-//   handleSubmit = (e) => {
-//     e.preventDefault();
-//     e.target.reset();
-//     this.props.handleSubmit(this.state.item);
-//     const item = {};
-//     this.setState({item});
-//   };
-
-//   render() {
-//     return (
-//       <>
-//         <h3>Add Item</h3>
-//         <form onSubmit={this.handleSubmit}>
-//           <label>
-//             <span>To Do Item</span>
-//             <input
-//               name="text"
-//               placeholder="Add To Do List Item"
-//               onChange={this.handleInputChange}
-//             />
-//           </label>
-//           <label>
-//             <span>Difficulty Rating</span>
-//             <input defaultValue="1" type="range" min="1" max="5" name="difficulty" onChange={this.handleInputChange} />
-//           </label>
-//           <label>
-//             <span>Assigned To</span>
-//             <input type="text" name="assignee" placeholder="Assigned To" onChange={this.handleInputChange} />
-//           </label>
-//           <button>Add Item</button>
-//         </form>
-//       </>
-//     );
-//   }
-// }
-
-// export default TodoForm;
