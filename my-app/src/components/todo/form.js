@@ -40,7 +40,6 @@ function TodoForm(props) {
 
             <Card.Text>Assigned To</Card.Text>
             <input
-              data-testid="assigneeTest"
               type="text"
               name="assignee"
               placeholder="Type Name Here"
