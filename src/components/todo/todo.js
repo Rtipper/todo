@@ -6,40 +6,66 @@ import './todo.scss';
 
 import { useState, useEffect } from 'react';
 import { Navbar, Container, Row, Col } from 'react-bootstrap';
+import axios from 'axios';
+import useAxios from 'axios-hooks';
 
 
 function ToDo() {
 
   const [list, setList] = useState([])
-  const [id, setId] = useState(0)
+  const [{ data, loading, error }, refetch] = useAxios({
+    url: 'https://api-js401.herokuapp.com/api/v1/todo', method: "GET"
+  });
 
   const addItem = (item) => {
-    item._id = id;
-    setId(id + 1)
     item.complete = false;
-    setList([...list, item])
+    let url = 'https://api-js401.herokuapp.com/api/v1/todo';
+    axios.post(url, item)
+      .then(function (response) {
+        console.log(response);
+        refetch()
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
-  const toggleComplete = (id) => {
+  const toggleComplete = async (id) => {
     let item = list.filter(i => i._id === id)[0] || {};
 
     if (item._id) {
       item.complete = !item.complete;
       let updateItem = list.map(listItem => listItem._id === item._id ? item : listItem);
+      let url = `https://api-js401.herokuapp.com/api/v1/todo/${id}`
       setList(updateItem)
+      await axios.put(url, item)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   };
 
+  const handleDeleteItem = (id) => {
+    let url = `https://api-js401.herokuapp.com/api/v1/todo/${id}`
+    axios.delete(url)
+      .then(function (response) {
+        console.log(response);
+        refetch()
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   useEffect(() => {
-    let dummyData = [
-      { _id: 1, complete: false, text: 'Clean the Kitchen', difficulty: 3, assignee: 'Person A' },
-      { _id: 2, complete: false, text: 'Do the Laundry', difficulty: 2, assignee: 'Person A' },
-      { _id: 3, complete: false, text: 'Walk the Dog', difficulty: 4, assignee: 'Person B' },
-      { _id: 4, complete: true, text: 'Do Homework', difficulty: 3, assignee: 'Person C' },
-      { _id: 5, complete: false, text: 'Take a Nap', difficulty: 1, assignee: 'Person B' },
-    ];
-    setList(dummyData)
-  }, []);
+    if (data && data.results) {
+      console.log('Data: ', data.results)
+      setList(data.results)
+    }
+  }, [data]);
 
   return (
     <>
@@ -57,6 +83,7 @@ function ToDo() {
               <Col xs={8}><TodoList
                 list={list}
                 handleComplete={toggleComplete}
+                handleDeleteItem={handleDeleteItem}
               /></Col>
             </Row>
           </Container>

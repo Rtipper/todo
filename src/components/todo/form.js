@@ -1,19 +1,9 @@
-import { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
+import useForm from './hooks/useForm.js'
 
 function TodoForm(props) {
-  const [item, setItem] = useState({})
-
-  const handleInputChange = (e) => {
-    setItem({ ...item, [e.target.name]: e.target.value })
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    e.target.reset();
-    props.handleSubmit(item);
-    setItem({});
-  }
+  
+  const [handleSubmit, handleInputChange, formData] = useForm(props.addItem)
 
   return (
     <>
@@ -36,14 +26,16 @@ function TodoForm(props) {
               min="1"
               max="5"
               name="difficulty"
-              onChange={handleInputChange} />
-
+              onChange={handleInputChange} 
+            />
             <Card.Text>Assigned To</Card.Text>
             <input
               type="text"
               name="assignee"
               placeholder="Type Name Here"
-              onChange={handleInputChange} />
+              onChange={handleInputChange} 
+            />
+
 
             <Button id="submitbutton" variant="primary" type="submit">
               Add New Task
