@@ -26,6 +26,22 @@
 }
 }
 
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  & > .pending {
+    cursor: pointer
+  }
+
+  & > .deleteItem:hover {
+    cursor: pointer
+  }
+}
+
+.difficulty {
+  text-align: right;
+}
+
 #toDoItem {
   margin-bottom: 25px;
 }
