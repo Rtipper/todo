@@ -1,10 +1,10 @@
-# Lab 31  -- ToDo pt1 
+# Lab 31 | 32  -- ToDo pt1 | pt2 
 
 **Author**: Ryan Tipper
 **Version**: 1.0.0
 
 # Pull Request
--  https://github.com/Rtipper/todo/pull/4
+-  https://github.com/Rtipper/todo/pull/5
 
 # Netlify Deployment
 - https://confident-haibt-085648.netlify.app/
@@ -25,6 +25,7 @@ GitHub
 React
 
 ## Change Log
+6/10 | 815PM: Lab 32 completed and updated
 
 ## Credits and Collaborations
 
