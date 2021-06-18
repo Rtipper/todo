@@ -27,32 +27,30 @@
 }
 
 .header-container {
-  display: flex;
-  justify-content: space-between;
-  & > .pending {
-    cursor: pointer
-  }
+display: flex;
+justify-content: space-between;
+& > .pending {
+  cursor: pointer
+}
 
-  & > .deleteItem:hover {
-    cursor: pointer
-  }
+& > .deleteItem:hover {
+  cursor: pointer
+}
 }
 
 .difficulty {
-  text-align: right;
+text-align: right;
 }
 
-#toDoItem {
-  margin-bottom: 25px;
-}
-
-#diffRating {
-  margin-bottom: 25px;
+.control-items {
+display: flex;
+justify-content: space-between;
+width: 40em
 }
 
 #submitbutton {
   background-color: rgb(140, 195, 247);
   border-color: rgb(140, 195, 247);
   margin-top: 10px;
+  margin-left: 15px;
 }
-

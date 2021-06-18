@@ -1,11 +1,17 @@
 import ToDo from './components/todo/todo.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import LoginContext from './auth/context.js'
+import SiteContext from './context/siteContext'
+
+
 function App() {
   return (
-    <>
-     <ToDo />
-    </>
+    <LoginContext>
+      <SiteContext>
+        <ToDo />
+      </SiteContext>
+    </LoginContext>
   );
 }
 
