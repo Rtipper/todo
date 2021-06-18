@@ -4,8 +4,6 @@ import { useContext } from 'react';
 
 
 function DropDown(props) {
-
-  // Context
   let { setSort } = useContext(SortContext);
 
   return (
@@ -14,8 +12,6 @@ function DropDown(props) {
         <Dropdown.Item onClick={() => setSort('all')} >All</Dropdown.Item>
         <Dropdown.Item onClick={() => setSort('completed')} >Completed</Dropdown.Item>
         <Dropdown.Item onClick={() => setSort('incomplete')}>Incomplete</Dropdown.Item>
-        <Dropdown.Item onClick={() => setSort('ascending')}>Difficulty (ascending)</Dropdown.Item>
-        <Dropdown.Item onClick={() => setSort('descending')}>Difficulty (descending)</Dropdown.Item>
       </DropdownButton>
     </>
   )
