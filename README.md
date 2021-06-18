@@ -4,7 +4,7 @@
 **Version**: 1.0.0
 
 # Pull Request
--  https://github.com/Rtipper/todo/pull/5
+-  https://github.com/Rtipper/todo/pull/6
 
 # Netlify Deployment
 - https://confident-haibt-085648.netlify.app/
@@ -26,6 +26,7 @@ React
 
 ## Change Log
 6/10 | 815PM: Lab 32 completed and updated
+6/17 | 640PM: Lab 33 & 34 finished and pushed into main
 
 ## Credits and Collaborations
 
